@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BmiDetails">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="90dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_background"
+            android:orientation="vertical">
+
+            <View
+                style="@style/Divider"
+                android:layout_marginTop="45dp" />
+
+            <com.google.android.material.textview.MaterialTextView style="@style/body_mass_index" />
+
+            <View
+                style="@style/Divider"
+                android:layout_marginTop="6dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bmi_value"
+                style="@style/body_mass_index_value" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/name_and_result"
+                style="@style/hello_name_results" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bmi_range_text"
+                style="@style/bmi_category_description"
+                android:layout_marginTop="15dp"
+                android:text="@string/default_extra_note" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ponderal_index_text"
+                style="@style/bmi_category_description"
+                android:layout_marginTop="7.5dp"
+                android:text="@string/default_ponderal_note" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:layout_marginBottom="29dp"
+                android:gravity="center">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/share_screenshot"
+                    style="@style/share_rate_material_button"
+                    android:text="@string/share"
+                    app:icon="@drawable/ic_share_icon" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rate_app"
+                    style="@style/share_rate_material_button"
+                    android:layout_marginEnd="33dp"
+                    android:text="@string/rate"
+                    app:icon="@drawable/ic_star_icon" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

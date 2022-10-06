@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddBmiDetails">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/enter_personal_details_text"
+        style="@style/personal_details_text" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_text_field"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enter_personal_details_text"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/calculate_bmi_text"
+        style="@style/calculate_bmi_text"
+        android:layout_below="@id/name_text_field" />
+
+    <LinearLayout
+        android:id="@+id/category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calculate_bmi_text"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/category_text"
+            android:text="@string/weight" />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/category_text"
+            android:text="@string/height" />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/category_text"
+            android:text="@string/gender" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/selector_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/category_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/calculate_bmi_text">
+
+            <NumberPicker
+                android:id="@+id/weight_number_picker"
+                style="@style/number_picker" />
+
+            <NumberPicker
+                android:id="@+id/height_number_picker"
+                style="@style/number_picker" />
+
+            <NumberPicker
+                android:id="@+id/gender_picker"
+                style="@style/number_picker" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calculate"
+        style="@style/calculate_button"
+        android:layout_below="@id/selector_layout" />
+
+</RelativeLayout>
