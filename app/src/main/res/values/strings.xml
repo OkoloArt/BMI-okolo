@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BMI-okolo</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Add BMI Details</string>
+    <string name="second_fragment_label">BMI Details</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="add_personal_details">Enter Personal Details</string>
+    <string name="name">Name</string>
+    <string name="calculate_bmi_text">Calculate Your Body Mass Index</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="gender">Gender</string>
+    <string name="calculate">Calculate</string>
+    <string name="body_mass_index_text">BODY MASS INDEX</string>
+    <string name="default_bmi_value">18.61</string>
+    <string name="default_index_category">HELLO OLIVIA , YOU ARE NORMAL</string>
+    <string name="default_extra_note">Normal BMI range: 18.5kg/m2 – 25kg/m2</string>
+    <string name="default_ponderal_note">Ponderal Index: 10.64kg/m3</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate</string>
+
+</resources>
