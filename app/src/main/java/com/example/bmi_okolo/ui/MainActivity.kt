@@ -34,11 +34,17 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.FirstFragment -> {
-                    supportActionBar?.title = resources.getString(R.string.first_fragment_label)
+                    supportActionBar?.apply {
+                        title = resources.getString(R.string.first_fragment_label)
+                        setDisplayHomeAsUpEnabled(false)
+                    }
                 }
                 R.id.SecondFragment -> {
-                    supportActionBar?.title = resources.getString(R.string.second_fragment_label)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                    supportActionBar?.apply {
+                        title = resources.getString(R.string.second_fragment_label)
+                        setDisplayHomeAsUpEnabled(true)
+                        setHomeAsUpIndicator(R.drawable.ic_arrow_home)
+                    }
                 }
             }
         }

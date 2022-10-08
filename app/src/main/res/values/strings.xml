@@ -22,6 +22,13 @@
     <string name="share">Share</string>
     <string name="rate">Rate</string>
     <string name="add_bmi_details">Add BMI Details</string>
+    <string name="blank_name">name cannot be blank</string>
+    <string name="ad_not_loaded">Ad was not loaded</string>
+    <string name="native_ad_unit_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_ad_not_loaded">Failed to load Native Ads</string>
+    <string name="intent_extra_text">This is my BMI. Do you want to check yours</string>
+    <string name="intent_title">Share With</string>
+    <string name="default_uri">http://play.google.com/store/apps/details?id=</string>
 
     <string-array name="gender_array">
         <item>Male</item>

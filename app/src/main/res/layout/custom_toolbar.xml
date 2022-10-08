@@ -11,6 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         app:titleCentered="true"
+        app:titleTextAppearance="@font/raleway_regular"
         android:layout_height="?attr/actionBarSize"
         app:popupTheme="@style/Theme.BMIokolo.PopupOverlay" />
 
