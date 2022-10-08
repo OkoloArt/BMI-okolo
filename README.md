@@ -35,7 +35,7 @@
 - Calculate BMI and display BMI category based on results
 
 ## Screenshots
-![cointract](https://user-images.githubusercontent.com/54189037/185761622-118bb13c-15ad-461d-adb8-5f04283ac7b2.jpg)
+![body_mass](https://user-images.githubusercontent.com/54189037/194711402-89d3b3b4-399a-4509-b990-fafd9359d4c8.jpg)
 
 ## Room for Improvement
 - Developing for Mutiple Screen Sizes
