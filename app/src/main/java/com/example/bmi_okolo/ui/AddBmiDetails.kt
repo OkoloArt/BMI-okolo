@@ -1,15 +1,10 @@
 package com.example.bmi_okolo.ui
 
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -66,7 +61,7 @@ class AddBmiDetails : Fragment() {
                 maxValue = 250
             }
             genderPicker.apply {
-                value = 0
+                value = 1
                 minValue = 0
                 maxValue = 1
                 displayedValues = gender
@@ -84,7 +79,7 @@ class AddBmiDetails : Fragment() {
         var value = 0.0
 
         if (name.isBlank()) {
-            binding.nameTextField.editText?.error = " name cannot be blank"
+            binding.nameTextField.editText?.error = getString(R.string.blank_name)
         } else {
             bmiViewModel.apply {
                 calculateBodyMassIndex(personHeight, personWeight)
@@ -129,7 +124,7 @@ class AddBmiDetails : Fragment() {
             mInterstitialAd?.show(requireActivity())
         } else {
             // If the Ad is not loaded, a toast will be displayed and then navigate to the second activity
-            Toast.makeText(requireContext(), "Ad was not loaded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.ad_not_loaded), Toast.LENGTH_SHORT).show()
             val action = AddBmiDetailsDirections.actionFirstFragmentToSecondFragment()
             findNavController().navigate(action)
         }
