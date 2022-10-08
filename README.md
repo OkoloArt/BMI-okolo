@@ -5,7 +5,7 @@
 
 > _What are the sprinkles?_ - The sprinkles involves styling the app, adding animations, admob implementation.
 
-> Live demo [_BMI-okolo_](). 
+> Live demo [_BMI-okolo_](https://appetize.io/app/7grx2grtt7ccwwyirxmiaspmda?device=pixel4xl&osVersion=12.0&scale=50). 
 
 ## Table of Contents
 * [General Info](#general-information)
