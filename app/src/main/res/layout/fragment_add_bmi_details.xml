@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".ui.AddBmiDetails">
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/enter_personal_details_text"
         style="@style/personal_details_text" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_text_field"
@@ -17,18 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/enter_personal_details_text"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="@dimen/_30dp"
+        android:layout_marginTop="@dimen/_30dp"
+        android:layout_marginEnd="@dimen/_30dp"
         android:hint="@string/name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:singleLine="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/calculate_bmi_text"
         style="@style/calculate_bmi_text"
         android:layout_below="@id/name_text_field" />
@@ -38,26 +41,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/calculate_bmi_text"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             style="@style/category_text"
             android:text="@string/weight" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             style="@style/category_text"
             android:text="@string/height" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             style="@style/category_text"
             android:text="@string/gender" />
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/selector_layout"
         android:layout_width="match_parent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:elevation="15dp"
+        app:cardCornerRadius="10dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/category_layout">
+        android:layout_below="@id/category_layout"
+        android:layout_marginTop="22dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,23 +74,23 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/calculate_bmi_text">
 
-            <NumberPicker
+            <com.shawnlin.numberpicker.NumberPicker
                 android:id="@+id/weight_number_picker"
-                style="@style/number_picker" />
+                style="@style/custom_number_picker" />
 
-            <NumberPicker
+            <com.shawnlin.numberpicker.NumberPicker
                 android:id="@+id/height_number_picker"
-                style="@style/number_picker" />
+                style="@style/custom_number_picker" />
 
-            <NumberPicker
+            <com.shawnlin.numberpicker.NumberPicker
                 android:id="@+id/gender_picker"
-                style="@style/number_picker" />
+                style="@style/custom_number_picker" />
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/calculate"
+    <Button
+        android:id="@+id/calculate_bmi"
         style="@style/calculate_button"
         android:layout_below="@id/selector_layout" />
 

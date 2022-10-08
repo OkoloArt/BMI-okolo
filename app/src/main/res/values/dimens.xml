@@ -3,4 +3,11 @@
     <dimen name="width_with_weight">0dp</dimen>
     <dimen name="divider_height">2dp</dimen>
     <dimen name="share_rate_button_radius">10dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_43dp">43dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_21dp">21dp</dimen>
+    <dimen name="_29dp">29dp</dimen>
+    <dimen name="_36dp">36dp</dimen>
 </resources>

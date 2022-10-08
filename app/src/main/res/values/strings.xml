@@ -7,7 +7,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="add_personal_details">Enter Personal Details</string>
+    <string name="add_personal_details">Enter Personal Detail</string>
     <string name="name">Name</string>
     <string name="calculate_bmi_text">Calculate Your Body Mass Index</string>
     <string name="weight">Weight</string>
@@ -21,5 +21,11 @@
     <string name="default_ponderal_note">Ponderal Index: 10.64kg/m3</string>
     <string name="share">Share</string>
     <string name="rate">Rate</string>
+    <string name="add_bmi_details">Add BMI Details</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
 </resources>
