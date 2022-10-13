@@ -8,7 +8,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         app:titleCentered="true"
         app:titleTextAppearance="@font/raleway_regular"

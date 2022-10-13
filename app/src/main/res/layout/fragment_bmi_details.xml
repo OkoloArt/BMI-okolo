@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.BmiDetails">
@@ -29,9 +28,7 @@
                 style="@style/Divider"
                 android:layout_marginTop="6dp" />
 
-            <TextView
-                android:id="@+id/bmi_value"
-                style="@style/body_mass_index_value" />
+            <TextView style="@style/body_mass_index_value" />
 
             <View
                 style="@style/Divider"
@@ -39,19 +36,15 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="@dimen/_43dp" />
 
-            <TextView
-                android:id="@+id/name_and_result"
-                style="@style/hello_name_results" />
+            <TextView style="@style/hello_name_results" />
 
             <TextView
-                android:id="@+id/bmi_range_text"
                 style="@style/bmi_category_description"
                 android:layout_marginTop="15dp"
                 android:text="@string/default_extra_note" />
 
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/ponderal_index_text"
                 style="@style/bmi_category_description"
                 android:text="@string/default_ponderal_note" />
 
@@ -62,13 +55,11 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/share_screenshot"
                     style="@style/share_rate_material_button"
                     android:text="@string/share"
                     app:icon="@drawable/ic_share_icon" />
 
                 <Button
-                    android:id="@+id/rate_app"
                     style="@style/share_rate_material_button"
                     android:layout_marginEnd="33dp"
                     android:text="@string/rate"

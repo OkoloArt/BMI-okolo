@@ -1,5 +1,4 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
     <dimen name="width_with_weight">0dp</dimen>
     <dimen name="divider_height">2dp</dimen>
     <dimen name="share_rate_button_radius">10dp</dimen>

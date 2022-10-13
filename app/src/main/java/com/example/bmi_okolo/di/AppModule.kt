@@ -1,7 +1,7 @@
 package com.example.bmi_okolo.di
 
 import com.example.bmi_okolo.domain.BmiRepository
-import com.example.bmi_okolo.domain.BmiRepositoryImpl
+import com.example.bmi_okolo.data.BmiRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bmi_okolo.R
 import com.example.bmi_okolo.databinding.FragmentAddBmiDetailsBinding
-import com.example.bmi_okolo.viewmodel.BmiViewModel
+import com.example.bmi_okolo.ui.viewmodel.BmiViewModel
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -98,14 +98,6 @@ class AddBmiDetails : Fragment() {
 
         if (mInterstitialAd != null) {
             mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
-                    super.onAdFailedToShowFullScreenContent(p0)
-                }
-
-                override fun onAdShowedFullScreenContent() {
-                    //Input your code here
-                    super.onAdShowedFullScreenContent()
-                }
 
                 // When you exit the ad using the cancel button, the next activity is displayed.
 
@@ -115,16 +107,15 @@ class AddBmiDetails : Fragment() {
                     findNavController().navigate(action)
                 }
 
-                // What will happen when the ad is clicked
-                override fun onAdClicked() {
-                    //Input your code here
-                    super.onAdClicked()
-                }
             }
             mInterstitialAd?.show(requireActivity())
         } else {
             // If the Ad is not loaded, a toast will be displayed and then navigate to the second activity
-            Toast.makeText(requireContext(), getString(R.string.ad_not_loaded), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.ad_not_loaded),
+                Toast.LENGTH_SHORT
+            ).show()
             val action = AddBmiDetailsDirections.actionFirstFragmentToSecondFragment()
             findNavController().navigate(action)
         }

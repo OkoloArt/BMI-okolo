@@ -1,9 +1,10 @@
-package com.example.bmi_okolo.domain
+package com.example.bmi_okolo.data
 
+import com.example.bmi_okolo.domain.BmiRepository
 import kotlin.math.pow
 
 
-class BmiRepositoryImpl : BmiRepository {
+class BmiRepositoryImpl() : BmiRepository {
 
     /**
      * > The function takes two parameters, height and weight, and returns the body mass index

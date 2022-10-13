@@ -1,4 +1,4 @@
-package com.example.bmi_okolo.viewmodel
+package com.example.bmi_okolo.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
