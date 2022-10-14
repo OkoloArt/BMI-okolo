@@ -11,7 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.bmi_okolo.R
 import com.example.bmi_okolo.databinding.FragmentAddBmiDetailsBinding
 import com.example.bmi_okolo.ui.viewmodel.BmiViewModel
-import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
@@ -30,14 +33,11 @@ class AddBmiDetails : Fragment() {
     private var _binding: FragmentAddBmiDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private var personHeight = 0
-    private var personWeight = 0
-    private var gender = arrayOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
 
         _binding = FragmentAddBmiDetailsBinding.inflate(inflater, container, false)
         return binding.root
@@ -50,13 +50,12 @@ class AddBmiDetails : Fragment() {
         MobileAds.initialize(requireContext())
         loadIntAd()
 
-        gender = resources.getStringArray(R.array.gender_array)
         binding.apply {
-            weightNumberPicker.apply {
+            weightPicker.apply {
                 minValue = 30
                 maxValue = 100
             }
-            heightNumberPicker.apply {
+            heightPicker.apply {
                 minValue = 100
                 maxValue = 250
             }
@@ -64,7 +63,7 @@ class AddBmiDetails : Fragment() {
                 value = 1
                 minValue = 0
                 maxValue = 1
-                displayedValues = gender
+                displayedValues = resources.getStringArray(R.array.gender_array)
             }
             calculateBmi.setOnClickListener {
                 calculateBmi()
@@ -73,10 +72,9 @@ class AddBmiDetails : Fragment() {
     }
 
     private fun calculateBmi() {
-        personHeight = binding.heightNumberPicker.value
-        personWeight = binding.heightNumberPicker.value
+        val personHeight = binding.heightPicker.value
+        val personWeight = binding.weightPicker.value
         val name = binding.nameTextField.editText?.text.toString()
-        var value = 0.0
 
         if (name.isBlank()) {
             binding.nameTextField.editText?.error = getString(R.string.blank_name)
@@ -84,33 +82,23 @@ class AddBmiDetails : Fragment() {
             bmiViewModel.apply {
                 calculateBodyMassIndex(personHeight, personWeight)
                 calculatePonderalIndex(personHeight, personWeight)
-                bodyMassIndexValue.observe(viewLifecycleOwner) {
-                    value = it
-                }
-                bodyMassResultText(value, name)
             }
             showInterstitialAds()
         }
     }
 
     private fun showInterstitialAds() {
-        // First we ensure the Interstitial ad is not nullable
 
         if (mInterstitialAd != null) {
             mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-
-                // When you exit the ad using the cancel button, the next activity is displayed.
-
                 override fun onAdDismissedFullScreenContent() {
                     super.onAdDismissedFullScreenContent()
                     val action = AddBmiDetailsDirections.actionFirstFragmentToSecondFragment()
                     findNavController().navigate(action)
                 }
-
             }
             mInterstitialAd?.show(requireActivity())
         } else {
-            // If the Ad is not loaded, a toast will be displayed and then navigate to the second activity
             Toast.makeText(
                 requireContext(),
                 getString(R.string.ad_not_loaded),
@@ -134,7 +122,6 @@ class AddBmiDetails : Fragment() {
                 }
             })
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

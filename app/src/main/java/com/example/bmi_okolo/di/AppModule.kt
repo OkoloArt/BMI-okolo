@@ -1,7 +1,7 @@
 package com.example.bmi_okolo.di
 
-import com.example.bmi_okolo.domain.BmiRepository
 import com.example.bmi_okolo.data.BmiRepositoryImpl
+import com.example.bmi_okolo.domain.BmiRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,5 +14,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideBmiRepository(): BmiRepository = BmiRepositoryImpl()
+    fun provideBmiRepository(bmiRepositoryImpl: BmiRepositoryImpl): BmiRepository {
+        return bmiRepositoryImpl
+    }
 }

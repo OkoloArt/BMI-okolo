@@ -43,47 +43,27 @@ class BmiDetails : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-
+    ): View {
         _binding = FragmentBmiDetailsBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         showNativeAd()
-
-        bmiViewModel.apply {
-            bodyMassIndexValue.observe(viewLifecycleOwner) {
-                bmiValue = it
-                binding.bmiValue.text = createSpannableString(bmiValue)
-            }
-            ponderalIndex.observe(viewLifecycleOwner) {
-                binding.ponderalIndexText.text = it
-            }
-            bodyMassIndexCategory(bmiValue)
-            bodyMassIndexCategory.observe(viewLifecycleOwner) {
-                binding.bmiRangeText.text = it
-            }
-            bodyMassResultText.observe(viewLifecycleOwner) {
-                binding.nameAndResult.text = it
-            }
-        }
+        bmiValue = bmiViewModel.bodyMassIndex
+        val formattedString = String.format("%.2f", bmiValue)
+        binding.bodyMassIndexValue.text = formattedString
 
         binding.apply {
-            rateApp.setOnClickListener {
-                rateMe()
-            }
-            shareScreenshot.setOnClickListener {
-                takeScreenShot(activity?.window!!.decorView)
-            }
+            share.setOnClickListener { takeScreenShot(binding.root) }
+            ponderalIndexText.text = bmiViewModel.ponderalIndex
         }
     }
 
     private fun showNativeAd() {
-        // Initializing the Google Admob SDK
+
         MobileAds.initialize(requireContext())
         val adLoader = AdLoader.Builder(requireContext(), getString(R.string.native_ad_unit_id))
             .forNativeAd { nativeAd ->
@@ -91,15 +71,9 @@ class BmiDetails : Fragment() {
                     visibility = View.VISIBLE
                     setNativeAd(nativeAd)
                 }
-            }
-            .withAdListener(object : AdListener() {
+            }.withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    // Handle the failure by logging, altering the UI, and so on.
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.native_ad_not_loaded),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(requireContext(), getString(R.string.native_ad_not_loaded), Toast.LENGTH_SHORT).show()
                 }
             })
             .build()
@@ -111,11 +85,9 @@ class BmiDetails : Fragment() {
         val timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         try {
             val mainDir = File(
-                requireContext().externalCacheDir, "FilShare"
+                    requireContext().externalCacheDir, "FilShare"
             )
-            if (!mainDir.exists()) {
-                val mkdir = mainDir.mkdir()
-            }
+
             val path = "$mainDir/Bmi-$timestamp.jpeg"
             val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
@@ -132,12 +104,11 @@ class BmiDetails : Fragment() {
         }
     }
 
-    //Share ScreenShot
     private fun shareScreenShot(imageFile: File) {
         val uri = FileProvider.getUriForFile(
-            requireContext(),
-            BuildConfig.APPLICATION_ID + ".provider",
-            imageFile
+                requireContext(),
+                BuildConfig.APPLICATION_ID + ".provider",
+                imageFile
         )
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
@@ -147,26 +118,22 @@ class BmiDetails : Fragment() {
         try {
             startActivity(Intent.createChooser(intent, getString(R.string.intent_title)))
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(requireContext(), "No App Available", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                    requireContext(),
+                    getString(R.string.no_available_app),
+                    Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
-    private fun rateMe() {
-        try {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=" + activity?.packageName)
-                )
-            )
-        } catch (e: ActivityNotFoundException) {
-            startActivity(
-                Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(getString(R.string.default_uri) + activity?.packageName)
-                )
-            )
-        }
+    private fun rateMe() = try {
+        startActivity(
+                Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity?.packageName))
+        )
+    } catch (e: ActivityNotFoundException) {
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.default_uri) + activity?.packageName))
+        )
     }
 
     private fun createSpannableString(bmi: Double): SpannableString {
@@ -175,34 +142,15 @@ class BmiDetails : Fragment() {
 
         when (spannableString.length) {
             5 -> {
-                spannableString.setSpan(
-                    AbsoluteSizeSpan(35, true),
-                    2,
-                    5,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-                spannableString.setSpan(
-                    AbsoluteSizeSpan(90, true),
-                    0,
-                    2,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-
+                with(spannableString) {
+                    setSpan(AbsoluteSizeSpan(35, true), 2, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    setSpan(AbsoluteSizeSpan(90, true), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                }
             }
             else -> {
                 with(spannableString) {
-                    setSpan(
-                        AbsoluteSizeSpan(90, true),
-                        0,
-                        3,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    setSpan(
-                        AbsoluteSizeSpan(35, true),
-                        3,
-                        6,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
+                    setSpan(AbsoluteSizeSpan(90, true), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    setSpan(AbsoluteSizeSpan(35, true), 3, 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 }
             }
         }
