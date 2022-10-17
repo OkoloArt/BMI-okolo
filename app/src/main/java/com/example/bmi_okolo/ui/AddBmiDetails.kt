@@ -82,6 +82,7 @@ class AddBmiDetails : Fragment() {
             bmiViewModel.apply {
                 calculateBodyMassIndex(personHeight, personWeight)
                 calculatePonderalIndex(personHeight, personWeight)
+                setName(name)
             }
             showInterstitialAds()
         }

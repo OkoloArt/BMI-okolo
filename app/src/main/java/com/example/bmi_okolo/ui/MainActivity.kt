@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.customToolbar.toolbar)
+        setSupportActionBar(binding.customBar.toolbar)
 
 
         // Retrieve NavController from the NavHostFragment

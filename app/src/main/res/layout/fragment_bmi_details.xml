@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.BmiDetails">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         style="@style/match_wrap"
         android:layout_above="@id/my_template"
         android:layout_centerInParent="true"
@@ -20,31 +21,36 @@
 
             <View
                 style="@style/Divider"
-                android:layout_marginTop="45dp" />
+                android:layout_marginTop="@dimen/_25dp" />
 
-            <TextView style="@style/body_mass_index" />
+            <com.google.android.material.textview.MaterialTextView style="@style/body_mass_index" />
 
             <View
                 style="@style/Divider"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="@dimen/_6dp" />
 
-            <TextView style="@style/body_mass_index_value" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/body_mass_index_value"
+                style="@style/body_mass_index_value" />
 
             <View
                 style="@style/Divider"
                 android:layout_marginStart="@dimen/_43dp"
-                android:layout_marginTop="6dp"
                 android:layout_marginEnd="@dimen/_43dp" />
 
-            <TextView style="@style/hello_name_results" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bmi_results"
+                style="@style/hello_name_results" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bmi_category_description"
                 style="@style/bmi_category_description"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/_15dp"
                 android:text="@string/default_extra_note" />
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ponderal_index_text"
                 style="@style/bmi_category_description"
                 android:text="@string/default_ponderal_note" />
 
@@ -54,14 +60,16 @@
                 android:layout_marginBottom="@dimen/_29dp"
                 android:gravity="center">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/share_screenshot"
                     style="@style/share_rate_material_button"
                     android:text="@string/share"
                     app:icon="@drawable/ic_share_icon" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rate"
                     style="@style/share_rate_material_button"
-                    android:layout_marginEnd="33dp"
+                    android:layout_marginEnd="@dimen/_33dp"
                     android:text="@string/rate"
                     app:icon="@drawable/ic_star_icon" />
 
@@ -69,7 +77,7 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.ads.nativetemplates.TemplateView
         android:id="@+id/my_template"

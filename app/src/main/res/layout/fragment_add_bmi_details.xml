@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".ui.AddBmiDetails">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/enter_personal_details_text"
-        style="@style/personal_details_text" />
-
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView"
+        style="@style/enter_personal_details"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_text_field"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/width_with_weight"
         android:layout_height="wrap_content"
-        android:layout_below="@id/enter_personal_details_text"
-        android:layout_marginStart="@dimen/_30dp"
-        android:layout_marginTop="@dimen/_30dp"
-        android:layout_marginEnd="@dimen/_30dp"
-        android:hint="@string/name">
+        android:hint="@string/name"
+        android:layout_marginTop="@dimen/_20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/match_wrap"
@@ -30,52 +28,96 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/calculate_bmi_text"
-        style="@style/calculate_bmi_text"
-        android:layout_below="@id/name_text_field" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView2"
+        style="@style/calculate_body_mass_index_text"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/name_text_field" />
 
-    <LinearLayout
-        android:id="@+id/category_layout"
-        style="@style/match_wrap"
-        android:layout_below="@id/calculate_bmi_text"
-        android:layout_marginTop="@dimen/_25dp"
-        android:orientation="horizontal">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView3"
+        android:layout_marginTop="@dimen/_20dp"
+        style="@style/category_text"
+        android:text="@string/weight"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <TextView
-            style="@style/category_text"
-            android:text="@string/weight" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView4"
+        style="@style/category_text"
+        android:text="@string/height"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
-        <TextView
-            style="@style/category_text"
-            android:text="@string/height" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView5"
+        style="@style/category_text"
+        android:text="@string/gender"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
-        <TextView
-            style="@style/category_text"
-            android:text="@string/gender" />
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/selector_layout"
-        style="@style/cardview_picker"
-        android:layout_below="@id/category_layout">
+        android:layout_marginTop="@dimen/_20dp"
+        android:layout_width="@dimen/width_with_weight"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <LinearLayout
             style="@style/match_wrap"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/calculate_bmi_text">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            <com.shawnlin.numberpicker.NumberPicker style="@style/custom_number_picker" />
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/weight_picker"
+                style="@style/custom_number_picker" />
 
-            <com.shawnlin.numberpicker.NumberPicker style="@style/custom_number_picker" />
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/height_picker"
+                style="@style/custom_number_picker" />
 
-            <com.shawnlin.numberpicker.NumberPicker style="@style/custom_number_picker" />
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/gender_picker"
+                style="@style/custom_number_picker" />
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calculate_bmi"
         style="@style/calculate_button"
-        android:layout_below="@id/selector_layout" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/selector_layout" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/_100dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="@dimen/_80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:theme="@style/Theme.BMIokolo.AppBarOverlay"
     android:background="@drawable/gradient_background"
@@ -8,6 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         app:titleCentered="true"
         app:titleTextAppearance="@font/raleway_regular"

@@ -25,6 +25,19 @@
     <string name="intent_extra_text">This is my BMI. Do you want to check yours</string>
     <string name="intent_title">Share With</string>
     <string name="default_uri">http://play.google.com/store/apps/details?id=</string>
+    <string name="underweight_text">Underweight BMI range: 1.0kg/m2 – 18.49kg/m2</string>
+    <string name="normal_weight_text">Normal BMI range: 18.5kg/m2 – 25kg/m2</string>
+    <string name="overweight_text">Overweight BMI range: 25.0kg/m2 – 29.9kg/m2</string>
+    <string name="obesity_text">Obesity BMI range: 30.0kg/m2 - higher</string>
+    <string name="no_available_app">No App Available</string>
+    <string name="underweight_result">Hello %s, You are Underweight</string>
+    <string name="normal_result">Hello  %s, You are Normal</string>
+    <string name="overweight_result">Hello  %s, You are Overweight</string>
+    <string name="obese_result">Hello  %s, You are Obese</string>
+    <string name="ponderal_text">Ponderal Index:  %sKg/m3</string>
+    <string name="uri_string">market://details?id=</string>
+    <string name="authority_provider">.provider</string>
+    <string name="file_share">FilShare</string>
 
     <string-array name="gender_array">
         <item>Male</item>

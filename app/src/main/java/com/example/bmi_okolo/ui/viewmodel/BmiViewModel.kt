@@ -14,20 +14,11 @@ class BmiViewModel @Inject constructor(
     private val calculatePonderalIndexUseCase: CalculatePonderalIndexUseCase
 ) : ViewModel() {
 
-//    private val _bodyMassIndexValue = MutableLiveData<Double>()
-//    val bodyMassIndexValue: LiveData<Double> get() = _bodyMassIndexValue
-
     var bodyMassIndex = 0.0
     var ponderalIndex = ""
 
-//    private val _ponderalIndex = MutableLiveData<String>()
-//    val ponderalIndex: LiveData<String> get() = _ponderalIndex
-//
-//    private val _bodyMassIndexCategory = MutableLiveData<String>()
-//    val bodyMassIndexCategory: LiveData<String> get() = _bodyMassIndexCategory
-//
-//    private val _bodyMassResultText = MutableLiveData<String>()
-//    val bodyMassResultText: LiveData<String> get() = _bodyMassResultText
+    private var _userName: String = ""
+    val userName get() = _userName
 
     fun calculateBodyMassIndex(height: Int, weight: Int) {
         viewModelScope.launch {
@@ -39,5 +30,9 @@ class BmiViewModel @Inject constructor(
         viewModelScope.launch {
             ponderalIndex = calculatePonderalIndexUseCase(height, weight)
         }
+    }
+
+    fun setName(name: String) {
+        _userName = name
     }
 }

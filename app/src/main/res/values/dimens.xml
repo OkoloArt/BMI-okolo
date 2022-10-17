@@ -1,4 +1,5 @@
 <resources>
+
     <dimen name="width_with_weight">0dp</dimen>
     <dimen name="divider_height">2dp</dimen>
     <dimen name="share_rate_button_radius">10dp</dimen>
@@ -12,4 +13,15 @@
     <dimen name="_24dp">24dp</dimen>
     <dimen name="_90dp">90dp</dimen>
     <dimen name="_25dp">25dp</dimen>
+    <dimen name="_6dp">6dp</dimen>
+    <dimen name="_15dp">15dp</dimen>
+    <dimen name="_33dp">33dp</dimen>
+    <dimen name="_8dp">8dp</dimen>
+    <dimen name="_76dp">76dp</dimen>
+    <dimen name="_3dp">3dp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_120dp">120dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
+    <dimen name="_80dp">80dp</dimen>
+
 </resources>

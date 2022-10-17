@@ -35,16 +35,16 @@
         <item name="android:layout_weight">1</item>
         <item name="np_selectedTextColor">#19769F</item>
         <item name="np_selectedTextSize">@dimen/_20dp</item>
-        <item name="np_textSize">20dp</item>
+        <item name="np_textSize">20sp</item>
         <item name="np_textColor">#CB6A6A6A</item>
         <item name="android:layout_marginLeft">@dimen/_30dp</item>
         <item name="android:layout_marginRight">@dimen/_20dp</item>
         <item name="np_dividerType">underline</item>
-        <item name="np_itemSpacing">-10dp</item>
+        <item name="np_itemSpacing">@dimen/_10dp</item>
         <item name="android:dividerPadding">@dimen/_10dp</item>
         <item name="np_dividerColor">#19769F</item>
         <item name="np_dividerDistance">@dimen/_30dp</item>
-        <item name="np_dividerThickness">3dp</item>
+        <item name="np_dividerThickness">@dimen/_3dp</item>
     </style>
 
     <style name="Divider">
@@ -57,7 +57,7 @@
     <style name="share_rate_material_button">
         <item name="android:background">@drawable/button_background</item>
         <item name="backgroundTint">@null</item>
-        <item name="android:layout_marginStart">23dp</item>
+        <item name="android:layout_marginStart">@dimen/_24dp</item>
         <item name="android:layout_width">@dimen/width_with_weight</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
@@ -66,30 +66,15 @@
     <style name="calculate_button">
         <item name="android:background">@drawable/gradient_background</item>
         <item name="backgroundTint">@null</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">@dimen/width_with_weight</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/calculate</item>
         <item name="android:radius">@dimen/_10dp</item>
-        <item name="android:layout_marginBottom">76dp</item>
-        <item name="android:layout_marginTop">@dimen/_30dp</item>
-        <item name="android:layout_marginLeft">@dimen/_43dp</item>
-        <item name="android:layout_marginRight">@dimen/_43dp</item>
-    </style>
-
-    <style name="personal_details_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">@font/raleway_regular</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">@string/add_personal_details</item>
-        <item name="android:textSize">30sp</item>
-        <item name="android:fontStyle">normal</item>
-        <item name="android:textColor">#19769F</item>
-        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_marginTop">@dimen/_20dp</item>
     </style>
 
     <style name="enter_personal_details">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">@dimen/width_with_weight</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/raleway_regular</item>
         <item name="android:gravity">center</item>
@@ -100,24 +85,12 @@
         <item name="android:layout_alignParentStart">true</item>
     </style>
 
-    <style name="calculate_bmi_text">
-        <item name="android:layout_marginTop">33dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">@font/poppins_regular</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">@string/calculate_bmi_text</item>
-        <item name="android:textSize">19sp</item>
-        <item name="android:textColor">#C0C0C0</item>
-        <item name="android:layout_alignParentStart">true</item>
-        <item name="fontStyle">normal</item>
-    </style>
-
     <style name="calculate_body_mass_index_text">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">@dimen/width_with_weight</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/_20dp</item>
         <item name="android:text">@string/calculate_bmi_text</item>
         <item name="android:textSize">19sp</item>
         <item name="android:textColor">@color/gray</item>
@@ -137,11 +110,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/raleway_regular</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_margin">@dimen/_10dp</item>
         <item name="android:alpha">0.5</item>
         <item name="android:text">@string/body_mass_index_text</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:layout_alignParentStart">true</item>
     </style>
 
@@ -153,7 +126,7 @@
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:text">@string/default_bmi_value</item>
         <item name="android:textSize">70sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="hello_name_results">
@@ -163,7 +136,7 @@
         <item name="android:gravity">center</item>
         <item name="android:text">@string/default_index_category</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginTop">@dimen/_20dp</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -173,9 +146,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginTop">@dimen/_8dp</item>
         <item name="android:textSize">12.5sp</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="cardview_picker">
@@ -185,7 +158,7 @@
         <item name="android:layout_marginRight">@dimen/_24dp</item>
         <item name="android:layout_marginTop">@dimen/_21dp</item>
         <item name="cardCornerRadius">@dimen/_10dp</item>
-        <item name="android:elevation">15dp</item>
+        <item name="android:elevation">@dimen/_15dp</item>
     </style>
 
     <style name="match_wrap">

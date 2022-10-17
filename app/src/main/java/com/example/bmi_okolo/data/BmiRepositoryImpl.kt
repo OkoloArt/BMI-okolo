@@ -25,12 +25,4 @@ class BmiRepositoryImpl @Inject constructor(
     override fun calculatePonderalIndex(height: Int, weight: Int): String {
       return bmiDataSource.calculatePonderalIndex(height, weight)
     }
-
-    override fun checkBmiCategoryByValue(bmi: Double): String {
-        TODO("Not yet implemented")
-    }
-
-    override fun bmiResultText(bmi: Double, name: String): String {
-        TODO("Not yet implemented")
-    }
 }

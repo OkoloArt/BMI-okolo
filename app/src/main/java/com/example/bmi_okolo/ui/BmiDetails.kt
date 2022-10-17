@@ -39,6 +39,7 @@ class BmiDetails : Fragment() {
     private val binding get() = _binding!!
 
     private var bmiValue = 0.0
+    private var name = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,17 +54,21 @@ class BmiDetails : Fragment() {
 
         showNativeAd()
         bmiValue = bmiViewModel.bodyMassIndex
-        val formattedString = String.format("%.2f", bmiValue)
-        binding.bodyMassIndexValue.text = formattedString
+        name = bmiViewModel.userName
 
         binding.apply {
-            share.setOnClickListener { takeScreenShot(binding.root) }
+            shareScreenshot.setOnClickListener {
+                takeScreenShot(activity?.window!!.decorView)
+            }
             ponderalIndexText.text = bmiViewModel.ponderalIndex
+            bmiCategoryDescription.text = bmiCategoryByValue(bmiValue)
+            bodyMassIndexValue.text = createSpannableString(bmiValue)
+            bmiResults.text = bmiResultText(bmiValue,name)
+            rate.setOnClickListener { rateMe() }
         }
     }
 
     private fun showNativeAd() {
-
         MobileAds.initialize(requireContext())
         val adLoader = AdLoader.Builder(requireContext(), getString(R.string.native_ad_unit_id))
             .forNativeAd { nativeAd ->
@@ -73,42 +78,47 @@ class BmiDetails : Fragment() {
                 }
             }.withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Toast.makeText(requireContext(), getString(R.string.native_ad_not_loaded), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.native_ad_not_loaded),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
             .build()
-
         adLoader.loadAd(AdRequest.Builder().build())
     }
 
-    private fun takeScreenShot(view: View) {
+    private fun takeScreenShot(view: View)
+    {
         val timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        try {
+        try
+        {
             val mainDir = File(
-                    requireContext().externalCacheDir, "FilShare"
-            )
+                requireContext().externalCacheDir , getString(R.string.file_share))
 
             val path = "$mainDir/Bmi-$timestamp.jpeg"
-            val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+            val bitmap = Bitmap.createBitmap(view.width , view.height , Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
             view.draw(canvas)
 
             val imageFile = File(path)
             val fileOutputStream = FileOutputStream(imageFile)
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream)
+            bitmap.compress(Bitmap.CompressFormat.PNG , 100 , fileOutputStream)
             fileOutputStream.flush()
             fileOutputStream.close()
             shareScreenShot(imageFile)
-        } catch (e: IOException) {
+        } catch (e: IOException)
+        {
             e.printStackTrace()
         }
     }
 
     private fun shareScreenShot(imageFile: File) {
         val uri = FileProvider.getUriForFile(
-                requireContext(),
-                BuildConfig.APPLICATION_ID + ".provider",
-                imageFile
+            requireContext(),
+            BuildConfig.APPLICATION_ID + getString(R.string.authority_provider),
+            imageFile
         )
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
@@ -119,20 +129,23 @@ class BmiDetails : Fragment() {
             startActivity(Intent.createChooser(intent, getString(R.string.intent_title)))
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(
-                    requireContext(),
-                    getString(R.string.no_available_app),
-                    Toast.LENGTH_SHORT
+                requireContext(),
+                getString(R.string.no_available_app),
+                Toast.LENGTH_SHORT
             ).show()
         }
     }
 
     private fun rateMe() = try {
         startActivity(
-                Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity?.packageName))
+            Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.uri_string) + activity?.packageName))
         )
     } catch (e: ActivityNotFoundException) {
         startActivity(
-            Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.default_uri) + activity?.packageName))
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse(getString(R.string.default_uri) + activity?.packageName)
+            )
         )
     }
 
@@ -155,6 +168,40 @@ class BmiDetails : Fragment() {
             }
         }
         return spannableString
+    }
+
+    private fun bmiCategoryByValue(bmi: Double): String {
+        return when (bmi) {
+            in 1.0..18.49 -> {
+                resources.getString(R.string.underweight_text)
+            }
+            in 18.5..24.9 -> {
+                resources.getString(R.string.normal_weight_text)
+            }
+            in 25.0..29.9 -> {
+                resources.getString(R.string.overweight_text)
+            }
+            else -> {
+                resources.getString(R.string.obesity_text)
+            }
+        }
+    }
+
+    private fun bmiResultText(bmi: Double, name: String): String {
+        return when (bmi) {
+            in 1.0..18.49 -> {
+                resources.getString(R.string.underweight_result, name)
+            }
+            in 18.5..24.9 -> {
+                resources.getString(R.string.normal_result, name)
+            }
+            in 25.0..29.9 -> {
+                resources.getString(R.string.overweight_result, name)
+            }
+            else -> {
+                resources.getString(R.string.obese_result, name)
+            }
+        }
     }
 
     override fun onDestroyView() {
